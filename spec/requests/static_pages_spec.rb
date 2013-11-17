@@ -4,12 +4,16 @@ describe "StaticPages" do
 
   subject {page}
 
+  shared_examples_for "all static pages" do
+    it { should have_content(heading) }
+    it { should have_title(full_title(page_title)) }
+  end
+
   describe "Home page" do
     before {visit root_path}
 
-    it {should have_content('Sample App')}
-    it {should have_title(full_title(''))}
-    it {should have_title('| Home')}
+    let(:heading)     { 'Sample App' }
+    let(:page_title)  { '' }
 
   end
 
